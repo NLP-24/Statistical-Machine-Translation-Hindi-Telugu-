@@ -32,6 +32,7 @@ def parse_srt(srt_file):
 def align_subtitles(hindi_subs, telugu_subs):
     aligned_sentences = []
     
+    # Aligning based on the order of subtitles in both lists
     for hin_sub, tel_sub in zip(hindi_subs, telugu_subs):
         aligned_sentences.append((hin_sub['sentence'], tel_sub['sentence']))
     
@@ -43,19 +44,32 @@ def save_to_tsv(aligned_sentences, output_file):
         for hindi_sentence, telugu_sentence in aligned_sentences:
             writer.writerow([hindi_sentence, telugu_sentence])
 
-hindi_srt_file = 'D:/Assignments/NLP project/web scrapper/The.Lord.of.the.Rings.The.Rings.of.Power.S02E07.Doomed.to.Die.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.hi.srt'
-telugu_srt_file = 'D:/Assignments/NLP project/web scrapper/The.Lord.of.the.Rings.The.Rings.of.Power.S02E07.Doomed.to.Die.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.te.srt'
+# Define the base path for the SRT files
+base_path = 'D:/Assignments/NLP project/web scrapper/'
 
-try:
-    hindi_subs = parse_srt(hindi_srt_file)
-    telugu_subs = parse_srt(telugu_srt_file)
+# Collect all aligned sentences
+all_aligned_sentences = []
 
-    aligned_sentences = align_subtitles(hindi_subs, telugu_subs)
+# Loop through the files from 1 to 10
+for i in range(1, 11):
+    hindi_srt_file = os.path.join(base_path, f'hin-{i}.srt')
+    telugu_srt_file = os.path.join(base_path, f'tel-{i}.srt')
 
-    output_tsv_file = 'parallel_corpus.tsv'
-    save_to_tsv(aligned_sentences, output_tsv_file)
+    try:
+        hindi_subs = parse_srt(hindi_srt_file)
+        telugu_subs = parse_srt(telugu_srt_file)
 
-    print(f"Successfully created parallel corpus: {output_tsv_file}")
+        # Align the subtitles for this pair
+        aligned_sentences = align_subtitles(hindi_subs, telugu_subs)
 
-except FileNotFoundError as e:
-    print(e)
+        # Extend the master list of aligned sentences
+        all_aligned_sentences.extend(aligned_sentences)
+
+    except FileNotFoundError as e:
+        print(e)
+
+# Save all aligned sentences to a single TSV file
+output_tsv_file = 'parallel_corpus.tsv'
+save_to_tsv(all_aligned_sentences, output_tsv_file)
+
+print(f"Successfully created parallel corpus: {output_tsv_file}")
