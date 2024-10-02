@@ -6,7 +6,7 @@ from langdetect.lang_detect_exception import LangDetectException
 DetectorFactory.seed = 0
 
 # Path to the main data folder
-data_folder = "data"
+data_folder = "data-number-standardized"
 
 # List to hold the folders where files were modified
 modified_folders = []
@@ -20,9 +20,12 @@ for folder_name in folders:
 
     # Check if it's a directory
     if os.path.isdir(folder_path):
+        # Extract the folder index from the folder name (e.g., 'data-1' -> '1')
+        folder_index = folder_name.split('-')[-1]
+
         # Construct file paths for Hindi and Telugu files
-        hindi_file = os.path.join(folder_path, f"hin-{folder_name}.srt")
-        telugu_file = os.path.join(folder_path, f"tel-{folder_name}.srt")
+        hindi_file = os.path.join(folder_path, f"hin-{folder_index}.srt")
+        telugu_file = os.path.join(folder_path, f"tel-{folder_index}.srt")
 
         try:
             # Read and detect the language of the Hindi file
