@@ -1,9 +1,10 @@
+# Script to move down a hindi column in parallel corpus
+
 import pandas as pd
 
-# Load your TSV file 
+# Load your TSV file (change path)
 df = pd.read_csv('D:\\Assignments\\NLP project\\web scrapper\\new.tsv', sep='\t', header=None)
 
-# Shift the Hindi column down by 1
 df[0] = df[0].shift(1)
 
 # Save the updated DataFrame back to a TSV file
