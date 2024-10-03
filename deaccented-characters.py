@@ -37,8 +37,8 @@ def process_srt_file_deaccent(input_path, output_path):
             outfile.write(deaccented_text + '\n')
 
 # Directory paths
-source_directory = r"./data-unprintable-cleaned"
-destination_directory = r"./data-deaccented"
+source_directory = "data-invalid-lang-range-cleaned"
+destination_directory = 'data-deaccented'
 
 os.makedirs(destination_directory, exist_ok=True)
 
