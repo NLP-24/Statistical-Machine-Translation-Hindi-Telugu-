@@ -75,8 +75,8 @@ def align_subtitles(hindi_subs, telugu_subs):
     return final_pairs
 
 def main():
-    source_base_dir = r'./data-deaccented'
-    destination_base_dir = r'./data-aligned'
+    source_base_dir = 'data-deaccented'
+    destination_base_dir = 'data-aligned'
 
     os.makedirs(destination_base_dir, exist_ok=True)
 
