@@ -1,3 +1,49 @@
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Folder Structure](#folder-structure)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Dataset Preparation](#dataset-preparation)
+- [How to Run](#how-to-run)
+- [Training the Model](#training-the-model)
+- [Translating New Sentences](#translating-new-sentences)
+- [Acknowledgments](#acknowledgments)
+
+## Project Overview
+The goal of this project is to translate sentences from Hindi to Telugu using a Transformer-based model. The model is built from scratch using PyTorch and includes various text preprocessing and feature extraction techniques to enhance translation quality.
+
+
+## Folder Descriptions
+- **data_model_input/**: Contains the dataset file in a tab-separated format with Hindi and Telugu sentence pairs.
+- **models/**: Contains the Transformer model definition and trained model weights.
+- **vocab/**: Stores the vocabulary files generated during preprocessing for Hindi (source) and Telugu (target).
+
+- **utils.py**: Provides helper functions like data loading, tokenization, and encoding.
+- **train.py**: Main script to perform data preprocessing, training, and saving the model.
+- **translate.py**: Script to translate input sentences from Hindi to Telugu using the trained model.
+- **requirements.txt**: Lists all the Python packages required to run the project.
+- **README.md**: Documentation on how to use the project, including installation and usage instructions.
+
+- ** additional nlp techniques folders## Step 2: Training the Model
+
+
+# Step - 1: To train the Transformer model, run:
+
+```bash
+python train.py
+```
+
+The script will initialize the model, train it on the dataset, and save the weights to models/model_weights.pth.
+
+# Step - 2: Translating New Sentences
+To translate new sentences from Hindi to Telugu, use:
+```
+python translate.py --input "आपका स्वागत है"
+
+```
+This will generate the Telugu translation for the given Hindi sentence.
+
+
 ## Machine translation model is in folder machine-translation
 
 - pre process flow:
@@ -60,51 +106,6 @@ We will be building a hybrid data set (movie subtitle from [OpenSubtitles.org](h
 # Hindi-to-Telugu Translation Model
 
 This project implements a Hindi-to-Telugu translation model using a Transformer architecture developed from scratch. It involves various NLP preprocessing tasks like POS tagging, TF-IDF vectorization, stop-word removal, transliteration, and more.
-
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Folder Structure](#folder-structure)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Dataset Preparation](#dataset-preparation)
-- [How to Run](#how-to-run)
-- [Training the Model](#training-the-model)
-- [Translating New Sentences](#translating-new-sentences)
-- [Acknowledgments](#acknowledgments)
-
-## Project Overview
-The goal of this project is to translate sentences from Hindi to Telugu using a Transformer-based model. The model is built from scratch using PyTorch and includes various text preprocessing and feature extraction techniques to enhance translation quality.
-
-
-## Folder Descriptions
-- **data_model_input/**: Contains the dataset file in a tab-separated format with Hindi and Telugu sentence pairs.
-- **models/**: Contains the Transformer model definition and trained model weights.
-- **vocab/**: Stores the vocabulary files generated during preprocessing for Hindi (source) and Telugu (target).
-
-- **utils.py**: Provides helper functions like data loading, tokenization, and encoding.
-- **train.py**: Main script to perform data preprocessing, training, and saving the model.
-- **translate.py**: Script to translate input sentences from Hindi to Telugu using the trained model.
-- **requirements.txt**: Lists all the Python packages required to run the project.
-- **README.md**: Documentation on how to use the project, including installation and usage instructions.
-
-- ** additional nlp techniques folders## Step 2: Training the Model
-
-
-# Step - 1: To train the Transformer model, run:
-
-```bash
-python train.py
-```
-
-The script will initialize the model, train it on the dataset, and save the weights to models/model_weights.pth.
-
-# Step - 2: Translating New Sentences
-To translate new sentences from Hindi to Telugu, use:
-```
-python translate.py --input "आपका स्वागत है"
-
-```
-This will generate the Telugu translation for the given Hindi sentence.
 
 # Individual Contribution
 - S20220010011 (Alagadapa Jaya Harsh Vardhan):
